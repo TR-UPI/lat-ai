@@ -1,0 +1,46 @@
+
+# Dependencies
+node_modules/
+.venv/
+venv/
+env/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Django
+backend/media/
+backend/staticfiles/
+staticfiles/
+media/
+
+# Local databases
+*.sqlite3
+*.db
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# Operating system
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+.runtime/
+*.tmp
+*.bak

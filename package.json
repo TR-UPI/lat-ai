@@ -1,0 +1,14 @@
+{
+  "name": "lat-ai-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LAT AI — LEARN AND TALK: учебная платформа с Django API",
+  "scripts": {
+    "start": "node server.cjs",
+    "dev": "node server.cjs",
+    "full": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/start-local.ps1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

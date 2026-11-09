@@ -1,0 +1,19 @@
+# Versions verified from the supplied backend's environment. Original requirements stay unchanged.
+Django==5.2.19
+djangorestframework==3.18.3
+djangorestframework-simplejwt==5.5.1
+django-cors-headers==4.9.0
+psycopg==3.3.8
+python-dotenv==1.2.4
+django-filter==26.2
+pgvector==0.5.1
+Pillow==13.0.0
+drf-nested-routers==0.95.3
+PyMuPDF==2.1
+python-docx==1.2.0
+python-pptx==1.0.2
+sentence-transformers==6.2.0
+torch==2.15.0
+transformers==5.22.2
+numpy==2.5.4
+huggingface-hub==2.4.0

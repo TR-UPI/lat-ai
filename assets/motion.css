@@ -1,0 +1,72 @@
+/* Interaction-only styles: keep the approved composition and palette. */
+.friendly-layout .button,
+.friendly-layout .icon-button,
+.friendly-layout .profile-button,
+.friendly-layout .link-button,
+.friendly-nav > a,
+.friendly-layout .lesson-sidebar > a {
+  transition: scale 140ms ease, background-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+.lat-ripple-host { overflow: hidden; isolation: isolate; }
+.lat-ripple-static { position: relative; }
+.lat-ripple { position: absolute; border-radius: 50%; background: currentColor; pointer-events: none; z-index: 3; will-change: transform, opacity; }
+.friendly-layout .lat-pressed { scale: .97; }
+.friendly-layout .friendly-nav > a.lat-pressed { scale: .985; }
+.friendly-layout .button:active:not(:disabled),
+.friendly-layout .icon-button:active:not(:disabled) { scale: .97; }
+.friendly-layout .friendly-nav { position: relative; isolation: isolate; }
+.friendly-nav.lat-nav-ready > a { position: relative; z-index: 1; }
+.friendly-nav.lat-nav-ready > a[aria-current="page"] { background: transparent; box-shadow: none; }
+.lat-nav-pill { position: absolute; z-index: 0; border-radius: 22px; background: #386b59; pointer-events: none; }
+.friendly-layout #main { animation: none; }
+.friendly-layout dialog[open] { animation: none; }
+.friendly-layout dialog::backdrop { animation: lat-backdrop-in 500ms ease-out; }
+.friendly-layout dialog.lat-modal-closing::backdrop { animation: lat-backdrop-out 180ms ease-in forwards; }
+.friendly-layout dialog.lat-modal-resizing { overflow: hidden; }
+.friendly-layout dialog .modal-content { min-width: 0; }
+.friendly-layout .progress-track > span { transform-origin: left center; }
+.friendly-layout .friendly-course-card,
+.friendly-layout .friendly-doc-row,
+.friendly-layout .friendly-answer-row,
+.friendly-layout .friendly-tutor,
+.friendly-layout .course-card,
+.friendly-layout .lesson-row {
+  transition: translate 200ms ease, scale 140ms ease, box-shadow 200ms ease, background-color 200ms ease;
+}
+.friendly-layout .button > .icon,
+.friendly-layout .friendly-nav .icon { transition: translate 180ms ease, rotate 180ms ease; }
+@media (hover: hover) and (pointer: fine) {
+  .friendly-layout .button:not(:disabled):hover { translate: 0 -2px; box-shadow: 0 5px 13px #23483e17; }
+  .friendly-layout .button:not(:disabled):hover > .icon:last-child { translate: 2px 0; }
+  .friendly-layout .friendly-course-card:hover,
+  .friendly-layout .friendly-tutor:hover,
+  .friendly-layout .course-card:hover { translate: 0 -3px; box-shadow: 0 8px 22px #23483e0b; }
+  .friendly-layout .friendly-doc-row[href]:hover,
+  .friendly-layout .friendly-answer-row[href]:hover,
+  .friendly-layout .lesson-row:hover { translate: 2px 0; }
+  .friendly-nav > a:hover .icon { rotate: -5deg; }
+}
+.friendly-layout button[aria-busy="true"]::after {
+  content: ''; display: inline-block; flex-shrink: 0; width: 14px; height: 14px;
+  border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%;
+  animation: lat-spin 700ms linear infinite;
+}
+@keyframes lat-spin { to { rotate: 360deg; } }
+@keyframes lat-backdrop-in { from { background-color: transparent; backdrop-filter: blur(0); } }
+@keyframes lat-backdrop-out { to { background-color: transparent; backdrop-filter: blur(0); } }
+@media (max-width: 740px) {
+  .friendly-sidebar { visibility: hidden; transition: transform 220ms ease, visibility 220ms; }
+  .friendly-sidebar.is-open { visibility: visible; }
+}
+  html[data-motion="reduced"] { scroll-behavior: auto; }
+  html[data-motion="reduced"] *, html[data-motion="reduced"] *::before, html[data-motion="reduced"] *::after, html[data-motion="reduced"] dialog::backdrop {
+    animation: none !important; transition: none !important; scroll-behavior: auto !important;
+  }
+  html[data-motion="reduced"] .lat-pressed, html[data-motion="reduced"] .button:active, html[data-motion="reduced"] .icon-button:active { scale: 1 !important; }
+  html[data-motion="reduced"] :is(.button, .feature-card, .course-card, .learning-block):hover { transform: none !important; }
+  html[data-motion="reduced"] .button:hover, html[data-motion="reduced"] .friendly-course-card:hover,
+  html[data-motion="reduced"] .friendly-tutor:hover, html[data-motion="reduced"] .course-card:hover,
+  html[data-motion="reduced"] .friendly-doc-row:hover, html[data-motion="reduced"] .friendly-answer-row:hover,
+  html[data-motion="reduced"] .lesson-row:hover, html[data-motion="reduced"] .button:hover > .icon:last-child { translate: none; }
+  html[data-motion="reduced"] .friendly-nav > a:hover .icon { rotate: none; }
+  html[data-motion="reduced"] .lat-ripple { display: none; }
