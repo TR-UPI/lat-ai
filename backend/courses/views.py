@@ -51,5 +51,6 @@ class LessonDocumentsView(generics.ListAPIView):
             lesson_id=self.kwargs["lesson_pk"],
             lesson__course_id=self.kwargs["course_pk"],
             lesson__course__is_published=True,
+            owner=self.request.user,
             status="ready"
         ).order_by("-created_at")

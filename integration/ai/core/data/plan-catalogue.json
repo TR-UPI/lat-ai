@@ -1,0 +1,86 @@
+{
+  "version": "implemented-catalogue-v1",
+  "status": "Authored complete content; teacher review pending",
+  "entries": [
+    {
+      "id": "L2.range.diagnostic",
+      "concept": "range",
+      "min_minutes": 3,
+      "max_minutes": 8,
+      "kind": "diagnostic",
+      "content_status": "manual_reference_not_teacher_approved",
+      "activity": "Новое упражнение: сначала предскажи вывод for n in range(2,5): print(n), затем запусти и сравни. Если прогноз расходится, сверяй каждое значение с правилом исключённой верхней границы из L2.",
+      "check": "Вывод — 2, 3, 4, каждое число с новой строки. Ученик сопоставил прогноз и запуск; конкретная причина старой ошибки не предполагается."
+    },
+    {
+      "id": "L2.range.transfer",
+      "concept": "range",
+      "min_minutes": 3,
+      "max_minutes": 8,
+      "kind": "independent",
+      "content_status": "manual_reference_not_teacher_approved",
+      "activity": "Без подсказок напиши новый цикл, печатающий 7, 8, 9, каждое число с новой строки. Сначала предскажи вывод, затем запусти.",
+      "check": "Программа печатает ровно 7, 8, 9 по одному на строку; прогноз совпадает, помощь не использовалась. При несовпадении фиксируется результат этой попытки."
+    },
+    {
+      "id": "L1.types.diagnostic",
+      "concept": "types",
+      "min_minutes": 3,
+      "max_minutes": 7,
+      "kind": "diagnostic",
+      "content_status": "manual_reference_not_teacher_approved",
+      "activity": "Без оценки предыдущих знаний предскажи два вывода: print(\"3\"+\"2\") и print(int(\"3\")+int(\"2\")). Затем выполни и объясни различие.",
+      "check": "Получены 32 и 5; ученик различает соединение строк и сложение чисел. При расхождении фиксируется новая наблюдаемая трудность, а не прежний дефицит."
+    },
+    {
+      "id": "L1.condition.practice",
+      "concept": "условия",
+      "min_minutes": 3,
+      "max_minutes": 7,
+      "kind": "practice",
+      "content_status": "manual_reference_not_teacher_approved",
+      "activity": "Новое упражнение: прочитай строку через input; если она равна \"да\", напечатай \"Верно\", иначе \"Иначе\". Проверь ввод \"да\" и ввод \"нет\".",
+      "check": "Для \"да\" вывод Верно, для \"нет\" — Иначе. Использованы ==, if/else, двоеточия и согласованные отступы; результат сравнен с обеими ожидаемыми строками."
+    },
+    {
+      "id": "L1.strings.diagnostic",
+      "concept": "строки",
+      "min_minutes": 3,
+      "max_minutes": 6,
+      "kind": "diagnostic",
+      "content_status": "authored_not_teacher_approved",
+      "activity": "Предскажи print(\"4\"+\"1\") и print(\"4\"*2), затем сравни результаты.",
+      "check": "41 и 44; соединение и повторение строк различаются."
+    },
+    {
+      "id": "L1.strings.transfer",
+      "concept": "строки",
+      "min_minutes": 3,
+      "max_minutes": 7,
+      "kind": "independent",
+      "content_status": "authored_not_teacher_approved",
+      "activity": "Без подсказок выведи строку «АБАБАБ», используя умножение строки.",
+      "check": "Вывод АБАБАБ; получен повторением «АБ» три раза."
+    },
+    {
+      "id": "L2.accumulator.transfer",
+      "concept": "накопитель",
+      "min_minutes": 4,
+      "max_minutes": 8,
+      "kind": "independent",
+      "content_status": "authored_not_teacher_approved",
+      "activity": "В новой задаче найди сумму 1, 2, 3 через цикл и накопитель. До запуска запиши значения накопителя после каждого шага.",
+      "check": "Начало 0; после шагов 1, 3, 6; итог 6."
+    },
+    {
+      "id": "L1.indent.diagnostic",
+      "concept": "отступы",
+      "min_minutes": 3,
+      "max_minutes": 7,
+      "kind": "diagnostic",
+      "content_status": "authored_not_teacher_approved",
+      "activity": "Сравни print внутри ветви if и после всей конструкции. Для истинного и ложного условия предскажи, какие строки выполнятся.",
+      "check": "Строка в ветви зависит от условия, после всей конструкции выполняется в обоих случаях."
+    }
+  ]
+}

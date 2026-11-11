@@ -1,0 +1,7 @@
+# Local extraction only; no OCR, embeddings or model downloads.
+pypdf==6.21.2
+python-docx==1.2.0
+python-pptx==1.0.2
+lxml==6.0.2
+Pillow==12.0.0
+XlsxWriter==3.2.9

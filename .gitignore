@@ -44,3 +44,14 @@ Desktop.ini
 .runtime/
 *.tmp
 *.bak
+
+# Model weights, private runtime exports and database journals
+*.gguf
+*.safetensors
+*.sqlite3-*
+*.db-*
+*.zip
+*.7z
+
+# Reviewed synthetic historical evidence is intentionally versioned.
+!research/**/*.log

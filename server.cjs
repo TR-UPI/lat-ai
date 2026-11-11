@@ -7,7 +7,8 @@ const { pipeline } = require('node:stream');
 
 const ROOT = fs.realpathSync(__dirname);
 const HOST = '127.0.0.1';
-const PORT = 5173;
+const PORT = Number(process.env?.LAD_FRONTEND_PORT || 5173);
+if (!Number.isInteger(PORT) || PORT < 1 || PORT > 65535) throw new Error('Invalid LAD_FRONTEND_PORT');
 const MIME = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -30,6 +31,13 @@ const MIME = {
 function insideRoot(candidate) {
   const relative = path.relative(ROOT, candidate);
   return relative === '' || (!relative.startsWith('..' + path.sep) && relative !== '..' && !path.isAbsolute(relative));
+}
+
+// I02: only public frontend assets are served. AI data, runtime secrets and
+// Windows short-name aliases must fail both before and after realpath.
+function publicAssetPath(candidate) {
+  const relative = path.relative(ROOT, candidate).toLowerCase();
+  return relative === '' || relative === 'index.html' || relative.split(path.sep)[0] === 'assets';
 }
 
 function respond(req, res, code, message, headers = {}) {
@@ -64,7 +72,7 @@ const server = http.createServer(async (req, res) => {
     }
 
     let filename = path.resolve(ROOT, '.' + pathname);
-    if (!insideRoot(filename)) {
+    if (!insideRoot(filename) || !publicAssetPath(filename)) {
       respond(req, res, 403, 'Forbidden');
       return;
     }
@@ -73,7 +81,7 @@ const server = http.createServer(async (req, res) => {
 
     // Check the actual target as well: a symlink must not expose another folder.
     filename = await fs.promises.realpath(filename);
-    if (!insideRoot(filename)) {
+    if (!insideRoot(filename) || !publicAssetPath(filename)) {
       respond(req, res, 403, 'Forbidden');
       return;
     }
@@ -111,13 +119,13 @@ const server = http.createServer(async (req, res) => {
 
 server.on('error', error => {
   console.error(error.code === 'EADDRINUSE'
-    ? 'Port 5173 is already in use. Close the other local server and try again.'
+    ? `Port ${PORT} is already in use. Choose another port; existing service was not stopped.`
     : 'Cannot start local server: ' + error.message);
   process.exitCode = 1;
 });
 
 server.listen(PORT, HOST, () => {
-  console.log('LAT AI ready at http://localhost:5173');
+  console.log(`LAT AI ready at http://${HOST}:${PORT}`);
   console.log('Press Ctrl+C to stop.');
 });
 

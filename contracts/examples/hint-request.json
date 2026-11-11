@@ -1,0 +1,19 @@
+{
+  "contract_version": "1.0",
+  "request_id": "d7ae9b27-2c00-4b18-a300-e526bda91501",
+  "action": "hint",
+  "question": "Подскажи следующий шаг",
+  "course_id": 11,
+  "lesson_id": 21,
+  "exercise_id": 31,
+  "mode": "internal",
+  "document_ids": [],
+  "code_context": {
+    "code": "age = 14\nif age >= 12:\n    print(\"Можно\")",
+    "revision": 7,
+    "selection": {
+      "start": 9,
+      "end": 22
+    }
+  }
+}

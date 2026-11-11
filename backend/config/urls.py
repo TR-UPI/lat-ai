@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 def health(request):
-    return JsonResponse({"status": "ok", "service": "Shag API"})
+    return JsonResponse({"status": "ok", "service": "LAT AI API"})
 
 urlpatterns = [
     path("admin/", admin.site.urls),

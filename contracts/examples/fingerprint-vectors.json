@@ -1,0 +1,159 @@
+{
+  "note": "Synthetic admitted inputs. Normalization/hash conformance only, not authorization/replay.",
+  "vectors": [
+    {
+      "id": "F1",
+      "request": {
+        "contract_version": "1.0",
+        "request_id": "d7ae9b27-2c00-4b18-a300-e526bda91501",
+        "action": "explain",
+        "question": "Почему выполняется эта ветка?",
+        "course_id": 11,
+        "lesson_id": 21,
+        "exercise_id": 31,
+        "mode": "internal",
+        "document_ids": [],
+        "code_context": {
+          "code": "age = 14\nif age >= 12:\n    print(\"Можно\")",
+          "revision": 7,
+          "selection": {
+            "start": 9,
+            "end": 22
+          }
+        }
+      },
+      "normalized": {
+        "contract_version": "1.0",
+        "request_id": "d7ae9b27-2c00-4b18-a300-e526bda91501",
+        "action": "explain",
+        "question": "Почему выполняется эта ветка?",
+        "course_id": 11,
+        "lesson_id": 21,
+        "exercise_id": 31,
+        "mode": "internal",
+        "document_ids": [],
+        "code_context": {
+          "code": "age = 14\nif age >= 12:\n    print(\"Можно\")",
+          "revision": 7,
+          "selection": {
+            "start": 9,
+            "end": 22
+          }
+        }
+      },
+      "canonical_json": "{\"action\":\"explain\",\"code_context\":{\"code\":\"age = 14\\nif age >= 12:\\n    print(\\\"Можно\\\")\",\"revision\":7,\"selection\":{\"end\":22,\"start\":9}},\"contract_version\":\"1.0\",\"course_id\":11,\"document_ids\":[],\"exercise_id\":31,\"lesson_id\":21,\"mode\":\"internal\",\"question\":\"Почему выполняется эта ветка?\",\"request_id\":\"d7ae9b27-2c00-4b18-a300-e526bda91501\"}",
+      "sha256": "5d6a0dcbb687db80ac220c7f2f0d28ba89d2d81bd6d41b099754098695da8845"
+    },
+    {
+      "id": "F2",
+      "request": {
+        "code_context": {
+          "code": "age = 14\nif age >= 12:\n    print(\"Можно\")",
+          "revision": 7,
+          "selection": {
+            "start": 9,
+            "end": 22
+          }
+        },
+        "exercise_id": 31,
+        "lesson_id": 21,
+        "course_id": 11,
+        "question": "Почему выполняется эта ветка?",
+        "action": "explain",
+        "request_id": "d7ae9b27-2c00-4b18-a300-e526bda91501",
+        "contract_version": "1.0"
+      },
+      "normalized": {
+        "contract_version": "1.0",
+        "request_id": "d7ae9b27-2c00-4b18-a300-e526bda91501",
+        "action": "explain",
+        "question": "Почему выполняется эта ветка?",
+        "course_id": 11,
+        "lesson_id": 21,
+        "exercise_id": 31,
+        "mode": "internal",
+        "document_ids": [],
+        "code_context": {
+          "code": "age = 14\nif age >= 12:\n    print(\"Можно\")",
+          "revision": 7,
+          "selection": {
+            "start": 9,
+            "end": 22
+          }
+        }
+      },
+      "canonical_json": "{\"action\":\"explain\",\"code_context\":{\"code\":\"age = 14\\nif age >= 12:\\n    print(\\\"Можно\\\")\",\"revision\":7,\"selection\":{\"end\":22,\"start\":9}},\"contract_version\":\"1.0\",\"course_id\":11,\"document_ids\":[],\"exercise_id\":31,\"lesson_id\":21,\"mode\":\"internal\",\"question\":\"Почему выполняется эта ветка?\",\"request_id\":\"d7ae9b27-2c00-4b18-a300-e526bda91501\"}",
+      "sha256": "5d6a0dcbb687db80ac220c7f2f0d28ba89d2d81bd6d41b099754098695da8845"
+    },
+    {
+      "id": "F3",
+      "request": {
+        "contract_version": "1.0",
+        "request_id": "d7ae9b27-2c00-4b18-a300-e526bda91501",
+        "action": "explain",
+        "question": "Это\r\nвопрос?",
+        "course_id": 11,
+        "lesson_id": 21,
+        "exercise_id": 31,
+        "mode": "internal",
+        "document_ids": [],
+        "code_context": {
+          "code": "😀\r\nx",
+          "revision": 0,
+          "selection": {
+            "start": 0,
+            "end": 2
+          }
+        }
+      },
+      "normalized": {
+        "contract_version": "1.0",
+        "request_id": "d7ae9b27-2c00-4b18-a300-e526bda91501",
+        "action": "explain",
+        "question": "Это\r\nвопрос?",
+        "course_id": 11,
+        "lesson_id": 21,
+        "exercise_id": 31,
+        "mode": "internal",
+        "document_ids": [],
+        "code_context": {
+          "code": "😀\r\nx",
+          "revision": 0,
+          "selection": {
+            "start": 0,
+            "end": 2
+          }
+        }
+      },
+      "canonical_json": "{\"action\":\"explain\",\"code_context\":{\"code\":\"😀\\r\\nx\",\"revision\":0,\"selection\":{\"end\":2,\"start\":0}},\"contract_version\":\"1.0\",\"course_id\":11,\"document_ids\":[],\"exercise_id\":31,\"lesson_id\":21,\"mode\":\"internal\",\"question\":\"Это\\r\\nвопрос?\",\"request_id\":\"d7ae9b27-2c00-4b18-a300-e526bda91501\"}",
+      "sha256": "b8d73e8d50863bf7ede155f9a87853a92d1ab4698cd82489f5cebd503293638b"
+    },
+    {
+      "id": "F4",
+      "request": {
+        "contract_version": "1.0",
+        "request_id": "d7ae9b27-2c00-4b18-a300-e526bda91501",
+        "action": "explain",
+        "question": "Почему выполняется эта ветка?",
+        "course_id": 11,
+        "lesson_id": 21,
+        "exercise_id": null,
+        "mode": "internal",
+        "document_ids": []
+      },
+      "normalized": {
+        "contract_version": "1.0",
+        "request_id": "d7ae9b27-2c00-4b18-a300-e526bda91501",
+        "action": "explain",
+        "question": "Почему выполняется эта ветка?",
+        "course_id": 11,
+        "lesson_id": 21,
+        "exercise_id": null,
+        "mode": "internal",
+        "document_ids": []
+      },
+      "canonical_json": "{\"action\":\"explain\",\"contract_version\":\"1.0\",\"course_id\":11,\"document_ids\":[],\"exercise_id\":null,\"lesson_id\":21,\"mode\":\"internal\",\"question\":\"Почему выполняется эта ветка?\",\"request_id\":\"d7ae9b27-2c00-4b18-a300-e526bda91501\"}",
+      "sha256": "41d2b4636a6e74542f081737f098993aba805746e260c539733dc3a2bd02e237"
+    }
+  ]
+}

@@ -54,6 +54,7 @@
   function errorText(body, fallback) {
     if (typeof body === 'string') return body.slice(0, 400) || fallback;
     if (!body || typeof body !== 'object') return fallback;
+    if (body.error && typeof body.error.message === 'string') return body.error.message;
     if (body.detail || body.error) return String(body.detail || body.error);
     return Object.entries(body).map(([key, value]) => key + ': ' + (Array.isArray(value) ? value.join(' ') : typeof value === 'object' ? JSON.stringify(value) : value)).join('\n').slice(0, 800) || fallback;
   }
@@ -67,7 +68,7 @@
     const multipart = body instanceof FormData;
     if (body !== undefined && !multipart) { headers.set('Content-Type', 'application/json'); body = JSON.stringify(body); }
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), multipart ? 120000 : 30000);
+    const timeout = setTimeout(() => controller.abort(), opts.timeoutMs || (multipart ? 120000 : 30000));
     try {
       const response = await fetch(url, { method: opts.method || 'GET', headers, body, signal: controller.signal, credentials: 'omit', redirect: 'error' });
       const text = await response.text();
@@ -198,11 +199,20 @@
     return request('documents/', { method: 'POST', body });
   }
   async function deleteDocument(id) { return request('documents/' + validId(id) + '/', { method: 'DELETE' }); }
-  async function searchDocuments(query) {
-    const text = String(query || '').trim();
-    if (!text) throw fail('Введите поисковый запрос.');
-    if (text.length > 1000) throw fail('Запрос слишком длинный: максимум 1000 символов.');
-    return request('documents/search/', { method: 'POST', body: { query: text } });
+  async function documentDetail(id) { return request('documents/' + validId(id) + '/'); }
+  async function generateStudyPack(id, body) {
+    return request('documents/' + validId(id) + '/generate/', { method: 'POST', body });
   }
-  global.LAT = Object.freeze({ mode, configure, settings, me, login, register, logout, courses, lessons, exercises, dashboard, attempts, submitAttempt, documents, uploadDocument, deleteDocument, searchDocuments, progress });
+  async function studyPacks() { return collection('documents/packs/'); }
+  function packPath(id) { return 'documents/packs/' + validId(id) + '/'; }
+  async function studyPack(id) { return request(packPath(id)); }
+  async function studyHint(id, question_id) {
+    return request(packPath(id) + 'hints/', { method: 'POST', body: { question_id } });
+  }
+  async function studyAttempt(id, body) {
+    return request(packPath(id) + 'attempts/', { method: 'POST', body });
+  }
+  async function tutorAsk(body) { return request('tutor/ask/', {method:'POST',body,timeoutMs:10000}); }
+  async function tutorContext(courseId,lessonId) { return request('tutor/context/?course_id='+validId(courseId)+'&lesson_id='+validId(lessonId)); }
+  global.LAT = Object.freeze({ mode, configure, settings, me, login, register, logout, courses, lessons, exercises, dashboard, attempts, submitAttempt, documents, uploadDocument, deleteDocument, documentDetail, generateStudyPack, studyPacks, studyPack, studyHint, studyAttempt, progress, tutorAsk, tutorContext });
 })(window);

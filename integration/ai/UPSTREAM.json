@@ -1,0 +1,88 @@
+{
+  "module": "LAT AI",
+  "version": "0.10.0",
+  "source_archive_sha256": "a4e7cbf0e0c559f45b36187c4b31c93e6f3f358c10371c473ccf069595be0d41",
+  "scope": "Unmodified src/data only. No weights, logs, model locks, demo session or runtime control server.",
+  "files": [
+    {
+      "path": "data/explain-options.json",
+      "sha256": "12f4f7c377e93bb23bb914974add8ab61d52d82ad5f9849597d47c0b41bb9434"
+    },
+    {
+      "path": "data/explain-prompt.txt",
+      "sha256": "6052c95ce1d6bc4aa38de7a4490c1c33b8a5a90b84593966e3e05ac01a87321b"
+    },
+    {
+      "path": "data/fact-catalogue.json",
+      "sha256": "950e432f993169bfbfd6b537faece87ac47de5def8abfa815938897aaf50df9d"
+    },
+    {
+      "path": "data/materials.json",
+      "sha256": "e7b96537581df64fb35a27552b9281352032dcd23fc7148808b4bb5a32c309de"
+    },
+    {
+      "path": "data/plan-catalogue.json",
+      "sha256": "5f4e3ad744fa416e3974edc430fdb6b93b13a964f64d8e4ee736881be2312ad5"
+    },
+    {
+      "path": "data/quiz-bank.json",
+      "sha256": "7f62812e5cab022c7d46a90d26d947bfaca43b3c88b01009e908e596657dfaa7"
+    },
+    {
+      "path": "src/cli.mjs",
+      "sha256": "395b913e929cb7d600e27c2aac2466b760c7b6c7099dcca8a850aa23ac4e5f8c"
+    },
+    {
+      "path": "src/code-context.mjs",
+      "sha256": "758aaf0a627a59821dbafed5ed502de1536e73df336860e2ad168de6324af528"
+    },
+    {
+      "path": "src/core.mjs",
+      "sha256": "c13c56562d32b7738f812e9a087fdc330a2f7b49fe9add7cbdc3f86d3dffacae"
+    },
+    {
+      "path": "src/fact-ledger.mjs",
+      "sha256": "0e73351c8a90b8b884b55dbeb35e5744082308adb70cc8badac1473837748fe5"
+    },
+    {
+      "path": "src/hint-ladder.mjs",
+      "sha256": "758728133619eb085d86c33a58c1ae146b8b68fa7adc4a76a2c7b8dd7f42e363"
+    },
+    {
+      "path": "src/local-model.mjs",
+      "sha256": "db5d762f29f5b85f338829ea6f4f75bb53f6ac169dc8598a5e89cd4994e6a62d"
+    },
+    {
+      "path": "src/model-context.mjs",
+      "sha256": "a91d229126b2fb3c8a4988c95d4ae7f2bd5f59ea2337e9f44271ebf979786846"
+    },
+    {
+      "path": "src/policy.mjs",
+      "sha256": "e9cb9f2f49dd7329dec0a541e4cf1e5c0931e8fe79053af25abbc3dd77798caf"
+    },
+    {
+      "path": "src/range-facts.mjs",
+      "sha256": "8f35867d2b5c126f51c7335c60f67364d32a7eaabf9427a9be4bfd09306481a0"
+    },
+    {
+      "path": "src/recovery.mjs",
+      "sha256": "57a87a8586bad1a63711f321386d7cc57f961f54ac71dba878f3810967f6f457"
+    },
+    {
+      "path": "src/safety-router.mjs",
+      "sha256": "48636d9c713571a7e23fd5a81436bd1f880e3681441cd89d6f87ab3577cabbda"
+    },
+    {
+      "path": "src/state-facts.mjs",
+      "sha256": "57793c5f19f133993f017895c461f97c96384987720165d822ca12284b7a538b"
+    },
+    {
+      "path": "src/tutor.mjs",
+      "sha256": "b04249e537704fe71ff2a3ec7345609e2d64d3d987600e0fd96438227a2dfa56"
+    },
+    {
+      "path": "src/validation.mjs",
+      "sha256": "1322a613a82098e0dad7213370483119de8a6e723d8ebdc0402abb24138ebafb"
+    }
+  ]
+}

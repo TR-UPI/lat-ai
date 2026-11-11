@@ -1,0 +1,235 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LAT tutor v1 response",
+  "type": "object",
+  "properties": {
+    "contract_version": {
+      "const": "1.0"
+    },
+    "request_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "outcome": {
+      "enum": [
+        "answer",
+        "fallback",
+        "policy"
+      ]
+    },
+    "reason": {
+      "enum": [
+        "ok",
+        "disabled",
+        "cold",
+        "unconfigured",
+        "quarantined",
+        "retired",
+        "timeout",
+        "transport",
+        "queue_full",
+        "queue_budget",
+        "invalid_output",
+        "crisis",
+        "privacy",
+        "health",
+        "boundaries",
+        "refusal",
+        "solution_request",
+        "support",
+        "off_topic",
+        "untrusted_claim",
+        "untrusted_document"
+      ]
+    },
+    "answer": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 900
+        },
+        "source": {
+          "enum": [
+            "model",
+            "catalogue",
+            "template",
+            "policy"
+          ]
+        },
+        "hint_level": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 3
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "explanation_verification": {
+          "enum": [
+            "unverified",
+            "not_applicable"
+          ]
+        },
+        "facts": {
+          "type": "array",
+          "maxItems": 128,
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4000
+              }
+            },
+            "required": [
+              "id",
+              "text"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "facts_review": {
+          "enum": [
+            "not_reviewed_by_teacher",
+            "not_applicable"
+          ]
+        }
+      },
+      "required": [
+        "text",
+        "source",
+        "hint_level",
+        "explanation_verification",
+        "facts",
+        "facts_review"
+      ],
+      "additionalProperties": false
+    },
+    "context": {
+      "type": "object",
+      "properties": {
+        "course_id": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "lesson_id": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "exercise_id": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "code_context": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "revision": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "selection": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "start": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 9007199254740991
+                        },
+                        "end": {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 9007199254740991
+                        },
+                        "start_line": {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 9007199254740991
+                        },
+                        "end_line": {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 9007199254740991
+                        }
+                      },
+                      "required": [
+                        "start",
+                        "end",
+                        "start_line",
+                        "end_line"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "code_units": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "execution": {
+                  "const": "not_run"
+                }
+              },
+              "required": [
+                "revision",
+                "selection",
+                "code_units",
+                "execution"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "course_id",
+        "lesson_id",
+        "exercise_id",
+        "code_context"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "contract_version",
+    "request_id",
+    "outcome",
+    "reason",
+    "answer",
+    "context"
+  ],
+  "additionalProperties": false
+}

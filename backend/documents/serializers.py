@@ -3,6 +3,7 @@ from .models import Document
 
 ALLOWED_EXTENSIONS = {".pdf", ".docx", ".pptx", ".txt"}
 class DocumentSerializer(serializers.ModelSerializer):
+    file = serializers.FileField(write_only=True)
     class Meta:
         model = Document
         fields = (

@@ -1,5 +1,6 @@
 
 from django.db import transaction
+from django.conf import settings
 from rest_framework import generics, permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -36,7 +37,7 @@ def update_lesson_progress(user, lesson):
             exercise=exercise
         ).order_by("-submitted_at", "-id").first()
 
-        if attempt is None or attempt.status != "checked":
+        if attempt is None or attempt.status not in ("checked", "auto_checked") or attempt.score is None:
             all_checked = False
             break
 
@@ -134,7 +135,10 @@ class ExerciseAttemptListCreateView(generics.ListCreateAPIView):
         ).select_related("exercise")
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        attempt = serializer.save(user=self.request.user)
+        if getattr(settings, 'LAD_AI_AUTOGRADE', False):
+            from .assessment import assess_attempt
+            assess_attempt(attempt, update_lesson_progress)
 
 
 class ExerciseAttemptReviewView(generics.UpdateAPIView):

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LAT tutor v1 error",
+  "type": "object",
+  "properties": {
+    "contract_version": {
+      "const": "1.0"
+    },
+    "request_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "enum": [
+            "INVALID_REQUEST",
+            "CONTRACT_VERSION_REQUIRED",
+            "INVALID_CODE_CONTEXT",
+            "AUTH_REQUIRED",
+            "CONTEXT_NOT_AVAILABLE",
+            "REQUEST_ID_CONFLICT",
+            "PAYLOAD_TOO_LARGE",
+            "UNSUPPORTED_MODE",
+            "UNSUPPORTED_CONTEXT",
+            "UNSUPPORTED_TASK",
+            "RATE_LIMITED",
+            "INVALID_CORE_RESPONSE",
+            "HINT_HISTORY_UNAVAILABLE",
+            "AI_UNAVAILABLE"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "retryable": {
+          "const": false
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "retryable"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "contract_version",
+    "request_id",
+    "error"
+  ],
+  "additionalProperties": false
+}

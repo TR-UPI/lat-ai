@@ -55,6 +55,8 @@ class Document(models.Model):
         default="uploaded"
     )
 
+    error = models.CharField(max_length=40, blank=True)
+
     extracted_text = models.TextField(
         "Извлечённый текст",
         blank=True
@@ -109,3 +111,63 @@ class DocumentChunk(models.Model):
 
     def __str__(self):
         return f"{self.document.title} — фрагмент {self.chunk_index}"
+
+
+ACTIVE_STUDY_STATUSES = ('queued', 'running')
+
+
+class StudyQueueLock(models.Model):
+    """A row locked by enqueue, delete and attempt transactions."""
+
+
+class StudyPack(models.Model):
+    class Status(models.TextChoices):
+        QUEUED = 'queued'
+        RUNNING = 'running'
+        READY = 'ready'
+        FAILED = 'failed'
+        UNKNOWN = 'unknown'
+
+    class Mode(models.TextChoices):
+        COURSE = 'course'
+        TEST = 'test'
+
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    document = models.ForeignKey(Document, on_delete=models.CASCADE, related_name='study_packs')
+    request_id = models.UUIDField()
+    mode = models.CharField(max_length=6, choices=Mode.choices)
+    source_start = models.PositiveIntegerField()
+    source_end = models.PositiveIntegerField()
+    source_text = models.TextField()
+    status = models.CharField(max_length=8, choices=Status.choices, default=Status.QUEUED)
+    error_code = models.CharField(max_length=80, blank=True)
+    result = models.JSONField(null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    dispatched_at = models.DateTimeField(null=True)
+    receipt_due_at = models.DateTimeField(null=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=('owner', 'request_id'), name='unique_study_generation'),
+            models.UniqueConstraint(
+                fields=('owner',), condition=models.Q(status__in=ACTIVE_STUDY_STATUSES),
+                name='unique_active_study_owner',
+            ),
+        ]
+        indexes = [models.Index(fields=('status', 'id'))]
+
+
+class StudyAttempt(models.Model):
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    pack = models.ForeignKey(StudyPack, on_delete=models.CASCADE, related_name='attempts')
+    request_id = models.UUIDField()
+    question_id = models.CharField(max_length=2)
+    choice = models.PositiveSmallIntegerField()
+    correct = models.BooleanField()
+    progress_snapshot = models.JSONField()
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=('owner', 'request_id'), name='unique_study_attempt'),
+        ]
+        indexes = [models.Index(fields=('pack', 'question_id', '-id'))]

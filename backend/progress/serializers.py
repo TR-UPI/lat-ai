@@ -27,6 +27,13 @@ class LessonProgressSerializer(serializers.ModelSerializer):
 
 
 class ExerciseAttemptSerializer(serializers.ModelSerializer):
+    answer = serializers.CharField(max_length=4000, allow_blank=False)
+
+    def validate_answer(self, value):
+        if any(0xD800 <= ord(c) <= 0xDFFF for c in value):
+            raise serializers.ValidationError('Некорректный текст ответа.')
+        return value
+
     exercise = serializers.PrimaryKeyRelatedField(
         queryset=Exercise.objects.filter(
             is_published=True,

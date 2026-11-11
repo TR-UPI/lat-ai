@@ -1,0 +1,5 @@
+{
+  "ProcessId": 37856,
+  "ExecutablePath": "C:\\Program Files\\nodejs\\node.exe",
+  "CommandLine": "\"C:\\Program Files\\nodejs\\node.exe\" integration/ai/worker.mjs"
+}

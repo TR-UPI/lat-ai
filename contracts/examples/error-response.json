@@ -1,0 +1,9 @@
+{
+  "contract_version": "1.0",
+  "request_id": "d7ae9b27-2c00-4b18-a300-e526bda91501",
+  "error": {
+    "code": "INVALID_CODE_CONTEXT",
+    "message": "Проверь размер кода и границы выделения. Текст не обрезан.",
+    "retryable": false
+  }
+}

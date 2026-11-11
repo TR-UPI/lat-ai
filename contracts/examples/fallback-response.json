@@ -1,0 +1,30 @@
+{
+  "contract_version": "1.0",
+  "request_id": "d7ae9b27-2c00-4b18-a300-e526bda91501",
+  "outcome": "fallback",
+  "reason": "disabled",
+  "answer": {
+    "text": "В if/elif/else выбирается первая подходящая ветвь. Проверь условие и отступы.",
+    "source": "template",
+    "hint_level": null,
+    "explanation_verification": "not_applicable",
+    "facts": [],
+    "facts_review": "not_applicable"
+  },
+  "context": {
+    "course_id": 11,
+    "lesson_id": 21,
+    "exercise_id": 31,
+    "code_context": {
+      "revision": 7,
+      "selection": {
+        "start": 9,
+        "end": 22,
+        "start_line": 2,
+        "end_line": 2
+      },
+      "code_units": 41,
+      "execution": "not_run"
+    }
+  }
+}

@@ -50,6 +50,8 @@ class ExerciseAttempt(models.Model):
     STATUS_CHOICES = [
         ("submitted", "Отправлено"),
         ("checked", "Проверено"),
+        ("auto_checked", "Проверено ИИ"),
+        ("assessment_failed", "Автопроверка не завершена"),
     ]
 
     user = models.ForeignKey(
@@ -87,6 +89,8 @@ class ExerciseAttempt(models.Model):
         choices=STATUS_CHOICES,
         default="submitted"
     )
+
+    assessment = models.JSONField(default=dict, blank=True, editable=False)
 
     submitted_at = models.DateTimeField(
         "Дата отправки",

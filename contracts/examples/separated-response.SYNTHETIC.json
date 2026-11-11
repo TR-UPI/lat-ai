@@ -1,0 +1,51 @@
+{
+  "contract_version": "1.0",
+  "request_id": "d7ae9b27-2c00-4b18-a300-e526bda91501",
+  "outcome": "answer",
+  "reason": "ok",
+  "answer": {
+    "text": "При age = 14 условие age >= 12 истинно.",
+    "source": "model",
+    "hint_level": null,
+    "explanation_verification": "unverified",
+    "facts": [
+      {
+        "id": "c305d01fb5ce6f3c_0",
+        "text": "L1 охватывает ввод, значения, простые операции, присваивание, сравнение, if/elif/else и отступы. Чтение файлов и try/except этим материалом не объясняются."
+      },
+      {
+        "id": "c305d01fb5ce6f3c_1",
+        "text": "= присваивает значение, == сравнивает значения на равенство."
+      },
+      {
+        "id": "c305d01fb5ce6f3c_2",
+        "text": "В единой цепочке if/elif/else выполняется первая истинная ветвь; else выполняется, только если все предыдущие условия ложны."
+      },
+      {
+        "id": "c305d01fb5ce6f3c_3",
+        "text": "Для двух логических условий and требует истинности обоих, or — хотя бы одного."
+      },
+      {
+        "id": "c305d01fb5ce6f3c_4",
+        "text": "Без показанного кода и полного сообщения об ошибке конкретная причина сбоя неизвестна; её нужно уточнить, а не угадывать."
+      }
+    ],
+    "facts_review": "not_reviewed_by_teacher"
+  },
+  "context": {
+    "course_id": 11,
+    "lesson_id": 21,
+    "exercise_id": 31,
+    "code_context": {
+      "revision": 7,
+      "selection": {
+        "start": 9,
+        "end": 22,
+        "start_line": 2,
+        "end_line": 2
+      },
+      "code_units": 41,
+      "execution": "not_run"
+    }
+  }
+}
