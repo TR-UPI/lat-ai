@@ -17,7 +17,7 @@
 - [Решения, ограничения и следующая задача](docs/agent-handoff/README.md).
 - [Запуск, БД, админка, проверки и восстановление](docs/agent-handoff/RUNBOOK.md).
 - [Результаты проверок](docs/agent-handoff/VALIDATION.md).
-- [Архив исследований](research/README.md).
+- Архив исследований (перенесено в ветку archive).
 - [Подробности MAIN](README-MAIN.txt).
 
 `START_PILOT.cmd` использует другую БД (`.runtime/pilot`); `START_AI_REVIEW`, `START-FULL` и старые отчёты не задают текущий запуск. [Прежний README](docs/history/README-before-publication.md) сохранён только для истории.
